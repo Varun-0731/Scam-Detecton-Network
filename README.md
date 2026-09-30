@@ -14,7 +14,7 @@ PaySim CSV → Preprocessing → Feature Engineering → Graph Construction
 
 ```bash
 # 1. Activate virtual environment
-cd /Users/varunkumar/.gemini/antigravity/scratch/scam-network-detection
+cd scam-network-detection
 source venv/bin/activate
 
 # 2. Run full pipeline (10% sample for quick testing)
