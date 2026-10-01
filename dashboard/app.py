@@ -44,14 +44,7 @@ st.title("🕸️ ScamNet Detector")
 st.markdown("### Graph Neural Network Fraud Detection Dashboard")
 st.markdown("This dashboard provides an investigator-facing interface for exploring coordinated scam networks detected by our Graph Neural Network models.")
 
-# Check for data
-data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
-outputs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'outputs')
 
-has_data = os.path.exists(os.path.join(data_dir, 'processed_transactions.pkl'))
-
-if not has_data:
-    st.warning("⚠️ Data files not found. Please run the data processing pipeline first to generate `processed_transactions.pkl`, `account_features.pkl`, etc.")
 
 # KPI Cards
 st.markdown("""

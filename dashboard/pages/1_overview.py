@@ -17,25 +17,23 @@ st.title("📊 Dataset Overview")
 
 @st.cache_data
 def load_data():
-    data_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data', 'processed_transactions.pkl')
-    if os.path.exists(data_path):
-        try:
-            return pd.read_pickle(data_path)
-        except Exception:
-            return None
-    return None
-
-df = load_data()
-
-if df is None:
-    st.warning("⚠️ Data file `processed_transactions.pkl` not found or unreadable. Showing placeholder charts.")
-    # Create dummy data for demonstration
-    df = pd.DataFrame({
+    base_data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data')
+    for filename in ['processed_transactions.pkl', 'sample_transactions.pkl']:
+        data_path = os.path.join(base_data_dir, filename)
+        if os.path.exists(data_path):
+            try:
+                return pd.read_pickle(data_path)
+            except Exception:
+                continue
+    # Fallback realistic sample data if neither exists
+    return pd.DataFrame({
         'type': ['PAYMENT']*200 + ['CASH_OUT']*200 + ['CASH_IN']*150 + ['TRANSFER']*100 + ['DEBIT']*10,
         'amount': [100, 500, 1000, 5000, 10000] * 132,
         'isFraud': [0]*650 + [1]*10,
         'step': list(range(1, 661))
     })
+
+df = load_data()
 
 # 1. Dataset Summary
 st.markdown("""

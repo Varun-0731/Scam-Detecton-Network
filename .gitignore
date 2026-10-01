@@ -20,6 +20,7 @@ data/*.pkl
 data/*.pt
 data/*.npy
 !data/.gitkeep
+!data/sample_transactions.pkl
 
 # Heavy model binaries
 models/*.joblib
